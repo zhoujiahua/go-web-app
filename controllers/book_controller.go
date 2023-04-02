@@ -8,10 +8,14 @@ import (
 	"github.com/zhoujiahua/go-web-app/models"
 )
 
-type BookController struct{}
+type BookController struct {
+	Router *gin.RouterGroup
+}
 
-func NewBookController() *BookController {
-	return &BookController{}
+func NewBookController(router *gin.Engine) *BookController {
+	bookController := &BookController{}
+	bookController.Router = router.Group("/api/v1/books")
+	return bookController
 }
 
 // 获取所有书籍
