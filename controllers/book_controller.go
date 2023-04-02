@@ -5,6 +5,7 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/zhoujiahua/go-web-app/models"
 )
 
 type BookController struct{}

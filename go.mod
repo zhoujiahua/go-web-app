@@ -1,4 +1,4 @@
-module go-web-app
+module github.com/zhoujiahua/go-web-app
 
 go 1.20
 

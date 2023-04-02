@@ -1,8 +1,8 @@
 package routes
 
 import (
-	"../controllers"
 	"github.com/gin-gonic/gin"
+	"github.com/zhoujiahua/go-web-app/controllers"
 )
 
 type BookRouter interface {
