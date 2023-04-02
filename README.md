@@ -43,7 +43,7 @@ go-web-app
 克隆此存储库：
 
 ```bash
-git clone https://restful/jerry/go-web-app.git
+git clone https://github.com/zhoujiahua/go-web-app.git
 ```
 
 进入项目目录：
