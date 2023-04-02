@@ -17,7 +17,7 @@ COPY . .
 RUN go build -o main .
 
 # 暴露端口，确保与 main.go 中设置的端口一致
-EXPOSE 8080
+EXPOSE 9527
 
 # 运行应用程序
 CMD ["/app/main"]

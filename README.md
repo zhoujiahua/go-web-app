@@ -66,7 +66,7 @@ go get
 go run main.go
 ```
 
-应用程序将在 `http://localhost:8080` 上运行。
+应用程序将在 `http://localhost:9527` 上运行。
 
 ### Docker
 
@@ -81,10 +81,10 @@ docker build -t go-web-app .
 
 ```bash
 # 同样地，`go-web-app-container` 是容器的名称，你可以根据自己的需要更改它。
-docker run -d -p 8080:8080 --name go-web-app-container go-web-app
+docker run -d -p 9527:9527 --name go-web-app-container go-web-app
 ```
 
-现在，你已经成功地将项目构建成 Docker 镜像并运行了容器。在浏览器中访问 `http://localhost:8080/api/v1/books`，你应该能看到项目正常运行并返回 JSON 数据。
+现在，你已经成功地将项目构建成 Docker 镜像并运行了容器。在浏览器中访问 `http://localhost:9527/api/v1/books`，你应该能看到项目正常运行并返回 JSON 数据。
 
 ### Docker-Compose
 
@@ -98,7 +98,7 @@ docker-compose up --build
 docker-compose down
 ```
 
-现在，你已经成功地使用 Docker Compose 构建并运行了该项目。在浏览器中访问 `http://localhost:8080/api/v1/books`，你应该能看到项目正常运行并返回 JSON 数据。
+现在，你已经成功地使用 Docker Compose 构建并运行了该项目。在浏览器中访问 `http://localhost:9527/api/v1/books`，你应该能看到项目正常运行并返回 JSON 数据。
 
 ### 许可
 

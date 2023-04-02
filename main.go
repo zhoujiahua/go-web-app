@@ -11,5 +11,5 @@ func main() {
 	bookController := controllers.NewBookController(router)
 	bookRouter := routes.NewBookRouter(router, bookController)
 	bookRouter.RegisterRoutes()
-	router.Run(":8080")
+	router.Run(":9527")
 }
