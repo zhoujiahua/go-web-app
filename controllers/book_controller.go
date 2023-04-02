@@ -1,11 +1,11 @@
 package controllers
 
 import (
-	"net/http"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/zhoujiahua/go-web-app/models"
+	"github.com/zhoujiahua/go-web-app/utils"
 )
 
 type BookController struct {
@@ -22,10 +22,10 @@ func NewBookController(router *gin.Engine) *BookController {
 func (bc *BookController) GetBooks(c *gin.Context) {
 	books, err := models.GetAllBooks()
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		utils.JSONResponse(c, -1, err.Error(), nil)
 		return
 	}
-	c.JSON(http.StatusOK, books)
+	utils.JSONResponse(c, 0, "success", books)
 }
 
 // 获取单个书籍
@@ -33,30 +33,30 @@ func (bc *BookController) GetBookByID(c *gin.Context) {
 	id := c.Param("id")
 	bookID, err := strconv.Atoi(id)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid book ID"})
+		utils.JSONResponse(c, -2, "Invalid book ID", nil)
 		return
 	}
 	book, err := models.GetBookByID(bookID)
 	if err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Book not found"})
+		utils.JSONResponse(c, -3, "Book not found", nil)
 		return
 	}
-	c.JSON(http.StatusOK, book)
+	utils.JSONResponse(c, 0, "success", book)
 }
 
 // 添加书籍
 func (bc *BookController) AddBook(c *gin.Context) {
 	var book models.Book
 	if err := c.ShouldBindJSON(&book); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		utils.JSONResponse(c, -2, err.Error(), nil)
 		return
 	}
 	err := models.AddBook(&book)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		utils.JSONResponse(c, -1, err.Error(), nil)
 		return
 	}
-	c.JSON(http.StatusCreated, book)
+	utils.JSONResponse(c, 0, "success", book)
 }
 
 // 修改书籍
@@ -64,21 +64,21 @@ func (bc *BookController) UpdateBook(c *gin.Context) {
 	id := c.Param("id")
 	bookID, err := strconv.Atoi(id)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid book ID"})
+		utils.JSONResponse(c, -2, "Invalid book ID", nil)
 		return
 	}
 	var book models.Book
 	if err := c.ShouldBindJSON(&book); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		utils.JSONResponse(c, -2, err.Error(), nil)
 		return
 	}
 	book.ID = bookID
 	err = models.UpdateBook(&book)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		utils.JSONResponse(c, -1, err.Error(), nil)
 		return
 	}
-	c.JSON(http.StatusOK, book)
+	utils.JSONResponse(c, 0, "success", book)
 }
 
 // 删除书籍
@@ -86,13 +86,13 @@ func (bc *BookController) DeleteBook(c *gin.Context) {
 	id := c.Param("id")
 	bookID, err := strconv.Atoi(id)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid book ID"})
+		utils.JSONResponse(c, -2, "Invalid book ID", nil)
 		return
 	}
 	err = models.DeleteBook(bookID)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		utils.JSONResponse(c, -1, err.Error(), nil)
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"message": "Book deleted"})
+	utils.JSONResponse(c, 0, "Book deleted", nil)
 }
