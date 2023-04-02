@@ -26,13 +26,15 @@ go-web-app
 └── go.mod          # Go 项目的依赖管理文件
 ```
 
-### 功能
+### 功能API
 
-- 获取所有书籍
-- 获取单个书籍
-- 添加书籍
-- 修改书籍
-- 删除书籍
+| API名称      | 路由                | 方法   | 请求参数                                            |
+| ------------ | ------------------- | ------ | --------------------------------------------------- |
+| 获取所有书籍 | `/api/v1/books`     | GET    | 无                                                  |
+| 获取单个书籍 | `/api/v1/books/:id` | GET    | 无                                                  |
+| 添加书籍     | `/api/v1/books`     | POST   | `title` (string) - 书名<br>`author` (string) - 作者 |
+| 修改书籍     | `/api/v1/books/:id` | PUT    | `title` (string) - 书名<br>`author` (string) - 作者 |
+| 删除书籍     | `/api/v1/books/:id` | DELETE | 无                                                  |
 
 ### 安装
 
@@ -66,40 +68,37 @@ go run main.go
 
 应用程序将在 `http://localhost:8080` 上运行。
 
-### API
+### Docker
 
-以下是 API 路由：
+> 打开终端或命令提示符，运行以下命令构建 Docker 镜像：
 
-#### 获取所有书籍
+```bash
+# 请注意，这里的 `go-web-app` 是镜像的名称，你可以根据自己的需要更改它。
+docker build -t go-web-app .
+```
 
-- 路径：`/api/v1/books`
-- 方法：`GET`
+> 镜像构建完成后，运行以下命令启动容器：
 
-#### 获取单个书籍
+```bash
+# 同样地，`go-web-app-container` 是容器的名称，你可以根据自己的需要更改它。
+docker run -d -p 8080:8080 --name go-web-app-container go-web-app
+```
 
-- 路径：`/api/v1/books/:id`
-- 方法：`GET`
+现在，你已经成功地将项目构建成 Docker 镜像并运行了容器。在浏览器中访问 `http://localhost:8080/api/v1/books`，你应该能看到项目正常运行并返回 JSON 数据。
 
-#### 添加书籍
+### Docker-Compose
 
-- 路径：`/api/v1/books`
-- 方法：`POST`
-- 请求参数：
-  - `title` (string) - 书名
-  - `author` (string) - 作者
+> 打开终端或命令提示符，运行以下命令启动 Docker Compose：
 
-#### 修改书籍
+```bash
+# 启动
+docker-compose up --build
 
-- 路径：`/api/v1/books/:id`
-- 方法：`PUT`
-- 请求参数：
-  - `title` (string) - 书名
-  - `author` (string) - 作者
+# 停止
+docker-compose down
+```
 
-#### 删除书籍
-
-- 路径：`/api/v1/books/:id`
-- 方法：`DELETE`
+现在，你已经成功地使用 Docker Compose 构建并运行了该项目。在浏览器中访问 `http://localhost:8080/api/v1/books`，你应该能看到项目正常运行并返回 JSON 数据。
 
 ### 许可
 
