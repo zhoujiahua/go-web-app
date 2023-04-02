@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # 构建应用程序
-RUN go build -o myapp
+RUN go build -o go-web-app
 
 # 设置容器入口点
-ENTRYPOINT ["./myapp"]
+ENTRYPOINT ["./go-web-app"]
