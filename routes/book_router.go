@@ -1,8 +1,9 @@
 package routes
 
 import (
+	"restful/jerry/go-web-app/controllers"
+
 	"github.com/gin-gonic/gin"
-	"github.com/zhoujiahua/go-web-app/controllers"
 )
 
 type BookRouter interface {

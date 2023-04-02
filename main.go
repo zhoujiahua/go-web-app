@@ -1,9 +1,10 @@
 package main
 
 import (
+	"restful/jerry/go-web-app/controllers"
+	"restful/jerry/go-web-app/routes"
+
 	"github.com/gin-gonic/gin"
-	"github.com/zhoujiahua/go-web-app/controllers"
-	"github.com/zhoujiahua/go-web-app/routes"
 )
 
 func main() {

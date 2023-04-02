@@ -3,7 +3,7 @@ package services
 import (
 	"errors"
 
-	"github.com/zhoujiahua/go-web-app/models"
+	"restful/jerry/go-web-app/models"
 )
 
 type BookServiceImpl struct {

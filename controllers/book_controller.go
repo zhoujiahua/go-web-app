@@ -3,9 +3,10 @@ package controllers
 import (
 	"strconv"
 
+	"restful/jerry/go-web-app/models"
+	"restful/jerry/go-web-app/utils"
+
 	"github.com/gin-gonic/gin"
-	"github.com/zhoujiahua/go-web-app/models"
-	"github.com/zhoujiahua/go-web-app/utils"
 )
 
 type BookController struct {

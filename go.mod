@@ -1,4 +1,4 @@
-module github.com/zhoujiahua/go-web-app
+module restful/jerry/go-web-app
 
 go 1.20
 
