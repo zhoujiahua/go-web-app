@@ -2,7 +2,7 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/zhoujiahua/test-app/controllers"
+	"github.com/zhoujiahua/go-web-app/web/routes/controllers"
 )
 
 type BookRouter struct {
